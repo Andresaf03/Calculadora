@@ -59,7 +59,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +114,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
         btIgual.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
         btIgual.setText("=");
 
-        btLimpiar.setBackground(new java.awt.Color(0, 102, 255));
+        btLimpiar.setBackground(new java.awt.Color(51, 102, 255));
         btLimpiar.setFont(new java.awt.Font("Helvetica Neue", 0, 22)); // NOI18N
         btLimpiar.setText("Limpiar");
 
