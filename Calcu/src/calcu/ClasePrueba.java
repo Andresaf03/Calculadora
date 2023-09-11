@@ -10,4 +10,7 @@ package calcu;
  */
 public class ClasePrueba {
     
+    int a;
+    int b;
+    
 }
