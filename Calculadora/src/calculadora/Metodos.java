@@ -39,5 +39,28 @@ public class Metodos {
         return res;
     }
     
+    public int jerarquia(Character signo){
+        int res = -1;
+        switch(signo){
+            case '(':
+            case ')':
+                res = 0;
+                break;
+            case '+':
+            case '-':
+                res = 1;
+                break;
+            case '*':
+            case '/':
+                res = 2;
+                break;
+            case '^':
+            case '√':
+                res = 3;
+                break;     
+        }
+        
+        return res;
+    }
     
 }
