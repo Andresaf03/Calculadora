@@ -80,18 +80,64 @@ public class Inapos{
       
         }
     
+    public static boolean isNumeric(String cadena){
+        boolean resp;
+        try{
+            Double.parseDouble(cadena);
+            resp=true;
+        }catch(NumberFormatException excepcion){
+            resp = false;
+        }
+        
+        return resp;
+        
+    }
+    
+    
     public double calcula(ArrayList<String> Caracteres){
         
         int i;
         double aux;
+        double num;
         double resp=0;
         String cadena;
-        PilaADT <Character> a = new PilaA();
+        PilaADT <Double> a = new PilaA();
         
        
         for(i=0;i<Caracteres.size();i++){
-            
+            cadena = Caracteres.get(i);
+            if(isNumeric(Caracteres.get(i))){
+                a.push((Double.parseDouble(Caracteres.get(i))));
+            }
+            else{
+                num = a.pop();
+                aux = a.pop();
+                
+                switch(Caracteres.get(i)){
+                    case "+":
+                        resp = aux + num;
+                        break;
+                    case "-":
+                        resp = aux - num;
+                        break;
+                    case "x":
+                        resp = aux * num;
+                        break;
+                    case "/":
+                        resp = aux / num;
+                        break;
+                    case "^":
+                        resp = Math.pow(aux, num);
+                        break;
+                }
+                
+                a.push(resp);
+                
+             }
+                
         }
+        
+        return a.pop();
 
         
     }
