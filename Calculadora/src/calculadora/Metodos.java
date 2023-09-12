@@ -13,37 +13,7 @@ import pilagenerica.PilaA;
  */
 public class Metodos {
     private PilaA<Character> pil;
-    
-    public Metodos() {
-        
-    }
-    
-    public boolean revisor1(String revisa) { //Revisor de parentesis
 
-        int der = 0, izq = 0;
-        boolean res = false;
-        boolean ban = true;
-        int i = 0;
-
-        while (i < revisa.length() && ban) {
-            if (revisa.charAt(i) == '(') {
-                Character ch = revisa.charAt(i);
-                pil.push(ch);
-            } else if (revisa.charAt(i) == ')') {
-                if (pil.isEmpty()) {
-                    ban = false;
-                } else {
-                    pil.pop();
-                }
-            }
-            i++;
-        }
-        if (pil.isEmpty() && ban) {
-            res = true;
-        }
-        return res;
-    }
-    
     public boolean revisor(String cadena) {
         PilaA<String> a= new PilaA();
         boolean resp = true;
@@ -91,7 +61,6 @@ public class Metodos {
                 res = 4;
                 break;
             case '^':
-            case '√':
                 res = 5;
                 break;
         }
@@ -103,7 +72,7 @@ public class Metodos {
         boolean res = true;
         int size = cadena.length();
         int i = 0;
-        if(inFin(cadena.charAt(0)) && inFin(cadena.charAt(cadena.length()-1))){ //No puede haber operadores al inicio o final
+        if(inPrin(cadena.charAt(0)) && inFin(cadena.charAt(cadena.length()-1))){ //No puede haber operadores al inicio o final
             if(revisor(cadena)){//Revisa que los parentesis funcionen
                 while(i < size-1 && res){
                     if(jerarquia(cadena.charAt(i))>1 && jerarquia(cadena.charAt(i+1))>1){//Revisa que no haya operadores juntos
@@ -127,7 +96,7 @@ public class Metodos {
         return res;
     }
     
-    //Metodo para revisar que no haya operadores al principio o final de la cadena
+    //Metodo para revisar que no haya operadores al final de la cadena, exceptuando el menos
     public boolean inFin(char c){
         boolean res = false;
         switch(jerarquia(c)){
@@ -139,4 +108,19 @@ public class Metodos {
         return res;
     }
     
+    //Metodo para revisar que no haya operadores al principio sin contar el menos para los numero negativos
+    public boolean inPrin(char c){
+        boolean res = false;
+        switch(jerarquia(c)){
+            case 0:
+            case 1:
+                res = true;
+        }
+        if(c=='-') {
+            res=true;
+        }
+        
+        return res;
+    }
+   
 }
