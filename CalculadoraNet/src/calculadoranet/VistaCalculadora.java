@@ -224,7 +224,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jTextArea1.setRows(5);
@@ -462,7 +461,27 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btParDerechoActionPerformed
 
     private void btCambioSignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambioSignoActionPerformed
-        cadena = "-(" + cadena + ")";
+       int i=cadena.length()-1, j;
+       String aux1="", aux2="";
+       boolean bandera = false;
+       while(i>=0 && !bandera) {
+           if(Metodos.jerarquia(cadena.charAt(i))>=3) {
+               bandera=true;
+               i++;
+           }
+           i--;
+       }
+       
+       for(j=0; j<=i; j++) {
+           aux1 = aux1 + cadena.charAt(j);
+       }
+       for(j=i+1; j<cadena.length(); j++) {
+           aux2 = aux2 + cadena.charAt(j);
+       }
+       aux1=aux1 + "(" + "-";
+       aux2=aux2 + ")";
+       cadena=aux1 + aux2;
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btCambioSignoActionPerformed
 
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
@@ -470,7 +489,9 @@ public class VistaCalculadora extends javax.swing.JFrame {
         try {
         resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo
         jTextArea1.setText(String.valueOf(resp));
+        cadena = "";
         } catch (ExcepcionColeccionVacia error) {
+            cadena = "";
           error = new ExcepcionColeccionVacia("ERROR");
           jTextArea1.setText("ERROR");
           throw error;

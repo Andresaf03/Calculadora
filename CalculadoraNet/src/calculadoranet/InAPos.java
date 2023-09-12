@@ -14,13 +14,19 @@ public class InAPos {
     public static ArrayList <String> InaPos(String cadena) {
         ArrayList <String> Caracteres= new ArrayList<String>(); //Creamos arraylist para almacenar numeros
         PilaADT<Character> Operadores = new PilaA(); //Creamos pila para almacenar operadores
-        
-        int i;
+        boolean bandera=false;
+        int i, negativo;
         String posfija="";
         for(i=0;i<cadena.length();i++){
                 switch(Metodos.jerarquia(cadena.charAt(i))){
                     case 0:
                         posfija = posfija + cadena.charAt(i);
+                        if(bandera) {
+                            negativo = Integer.valueOf(posfija);
+                            negativo = negativo * (-1);
+                            posfija=String.valueOf(negativo);
+                            bandera = false;
+                        }
                         break;
                     case 2:
                         posfija = posfija + cadena.charAt(i);
@@ -30,9 +36,15 @@ public class InAPos {
                             Caracteres.add(posfija);
                         }
                         posfija="";
+                        
+                        if(cadena.charAt(i)=='(' && cadena.charAt(i+1)=='-' && i<cadena.length()-1 && !bandera) {
+                            bandera = true;
+                        }
+                        
                         if(cadena.charAt(i)=='('){
                             Operadores.push(cadena.charAt(i));
                         }
+                        
                         else{
                             while(Operadores.peek()!='('){
                                 Caracteres.add(String.valueOf(Operadores.pop()));
@@ -45,12 +57,14 @@ public class InAPos {
                         if(!posfija.equals("")){
                         Caracteres.add(posfija);
                         }
-                        posfija="";
-                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
-                            Caracteres.add(String.valueOf(Operadores.pop()));
+                        if(!bandera) {
+                            posfija="";
+                            while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
+                                Caracteres.add(String.valueOf(Operadores.pop()));
                             
+                            }
+                            Operadores.push(cadena.charAt(i));
                         }
-                        Operadores.push(cadena.charAt(i));
                         break;
                     case 4:
                         if(!posfija.equals("")){
