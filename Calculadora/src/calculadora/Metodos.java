@@ -4,6 +4,7 @@
  */
 package calculadora;
 
+import static java.lang.Character.isDigit;
 import pilagenerica.PilaA;
 
 /**
@@ -12,8 +13,12 @@ import pilagenerica.PilaA;
  */
 public class Metodos {
     private PilaA<Character> pil;
-
-    public boolean revisador(String revisa) {
+    
+    public Metodos() {
+        
+    }
+    
+    public boolean revisor1(String revisa) { //Revisor de parentesis
 
         int der = 0, izq = 0;
         boolean res = false;
@@ -39,25 +44,96 @@ public class Metodos {
         return res;
     }
     
-    public int jerarquia(Character signo){
-        int res = -1;
-        switch(signo){
+    public boolean revisor(String cadena) {
+        PilaA<String> a= new PilaA();
+        boolean resp = true;
+        int i = 0;
+        while (i < cadena.length() && resp) {
+            if (cadena.charAt(i)=='(') {
+                a.push("(");    
+            }
+            else
+                if (cadena.charAt(i)==')') {
+                    if(a.isEmpty())
+                        resp = false;
+                    else
+                        a.pop();    
+                }  
+            i++;
+        }
+        if(!a.isEmpty())
+            resp = false;
+        
+        return resp;
+    }
+    
+    public int jerarquia(Character signo) {
+    int res = -1; //Todos los valores que no sean enteros o se contengan en un caso regresan -1
+
+    if (isDigit(signo)) { //Revisa que el valor sea o no entero
+        res = 0; //Todos los enteros regresan 0
+    } else if (signo instanceof Character) { 
+        char operador = (char) signo;
+        switch (operador) {
             case '(':
             case ')':
-                res = 0;
+                res = 1;
+                break;
+            case '.':
+                res = 2;
                 break;
             case '+':
             case '-':
-                res = 1;
+                res = 3;
                 break;
-            case '*':
+            case 'x':
             case '/':
-                res = 2;
+                res = 4;
                 break;
             case '^':
             case '√':
-                res = 3;
-                break;     
+                res = 5;
+                break;
+        }
+    }
+    return res;
+    }
+    
+    public boolean revisorCadena(String cadena){
+        boolean res = true;
+        int size = cadena.length();
+        int i = 0;
+        if(inFin(cadena.charAt(0)) && inFin(cadena.charAt(cadena.length()-1))){ //No puede haber operadores al inicio o final
+            if(revisor(cadena)){//Revisa que los parentesis funcionen
+                while(i < size-1 && res){
+                    if(jerarquia(cadena.charAt(i))>1 && jerarquia(cadena.charAt(i+1))>1){//Revisa que no haya operadores juntos
+                        res = false; 
+                    }
+                    if(jerarquia(cadena.charAt(i))==0 && cadena.charAt(i+1)=='('){//Revisa que no haya numeros y parentesis izquierdos juntos
+                        res = false; 
+                    }
+                    i++;
+                }
+                                   
+            }
+            else {
+                res=false;
+            }
+        }
+        else {
+            res=false;
+        }
+        
+        return res;
+    }
+    
+    //Metodo para revisar que no haya operadores al principio o final de la cadena
+    public boolean inFin(char c){
+        boolean res = false;
+        switch(jerarquia(c)){
+            case 0:
+            case 1:
+                res = true;
         }
         
         return res;
