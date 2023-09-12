@@ -13,6 +13,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     //atributos de la calculadora propia
     private String cadena="";
+    double resp;
     
     /**
      * Creates new form VistaCalculadora
@@ -44,7 +45,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
         btIgual = new javax.swing.JButton();
         btLimpiar = new javax.swing.JButton();
         btPotencia = new javax.swing.JButton();
-        btRaiz = new javax.swing.JButton();
         btDivision = new javax.swing.JButton();
         btMultiplicacion = new javax.swing.JButton();
         btResta = new javax.swing.JButton();
@@ -188,15 +188,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        btRaiz.setBackground(new java.awt.Color(153, 51, 255));
-        btRaiz.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
-        btRaiz.setText("√");
-        btRaiz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRaizActionPerformed(evt);
-            }
-        });
-
         btDivision.setBackground(new java.awt.Color(153, 51, 255));
         btDivision.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
         btDivision.setText("/");
@@ -257,7 +248,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        btCambioSigno.setBackground(new java.awt.Color(51, 102, 255));
+        btCambioSigno.setBackground(new java.awt.Color(153, 51, 255));
         btCambioSigno.setFont(new java.awt.Font("Helvetica Neue", 0, 40)); // NOI18N
         btCambioSigno.setText("±");
         btCambioSigno.addActionListener(new java.awt.event.ActionListener() {
@@ -306,10 +297,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
                                         .addComponent(btOcho, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btNueve, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btCambioSigno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +308,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(btDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(btCambioSigno, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btParIzquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -339,13 +327,11 @@ public class VistaCalculadora extends javax.swing.JFrame {
                             .addComponent(btParIzquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                             .addComponent(btParDerecho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btDivision, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                            .addComponent(btCambioSigno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                            .addComponent(btCambioSigno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btSiete, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
@@ -381,111 +367,114 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCeroActionPerformed
-        cadena = cadena + "0";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "0"; //añade un 0 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btCeroActionPerformed
 
     private void btPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPuntoActionPerformed
-        cadena= cadena + ".";
-        jTextArea1.setText(cadena);
+        cadena= cadena + "."; //añade un . a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btPuntoActionPerformed
 
     private void btUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnoActionPerformed
-        cadena = cadena + "1";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "1"; //añade un 1 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btUnoActionPerformed
 
     private void btDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDosActionPerformed
-        cadena = cadena + "2";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "2"; //añade un 2 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btDosActionPerformed
 
     private void btTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTresActionPerformed
-        cadena = cadena + "3";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "3"; //añade un 3 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btTresActionPerformed
 
     private void btCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCuatroActionPerformed
-        cadena = cadena + "4";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "4"; //añade un 4 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btCuatroActionPerformed
 
     private void btCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCincoActionPerformed
-        cadena = cadena + "5";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "5"; //añade un 5 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btCincoActionPerformed
 
     private void btSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeisActionPerformed
-        cadena = cadena + "6";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "6"; //añade un 6 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btSeisActionPerformed
 
     private void btSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSieteActionPerformed
-        cadena = cadena + "7";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "7"; //añade un 7 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btSieteActionPerformed
 
     private void btOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOchoActionPerformed
-        cadena = cadena + "8";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "8"; //añade un 8 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btOchoActionPerformed
 
     private void btNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNueveActionPerformed
-        cadena = cadena + "9";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "9"; //añade un 9 a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btNueveActionPerformed
 
     private void btSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSumaActionPerformed
-        cadena = cadena + "+";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "+"; //añade un + a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btSumaActionPerformed
 
     private void btRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRestaActionPerformed
-        cadena = cadena + "-";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "-"; //añade un - a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btRestaActionPerformed
 
     private void btMultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMultiplicacionActionPerformed
-        cadena = cadena + "x";
+        cadena = cadena + "x"; //añade un x a la cadena
         jTextArea1.setText(cadena);
     }//GEN-LAST:event_btMultiplicacionActionPerformed
 
     private void btDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDivisionActionPerformed
-        cadena = cadena + "/";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "/"; //añade un / a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btDivisionActionPerformed
 
     private void btPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPotenciaActionPerformed
-        cadena = cadena + "^";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "^"; //añade un  a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btPotenciaActionPerformed
-
-    private void btRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRaizActionPerformed
-        cadena = cadena + "√";
-        jTextArea1.setText(cadena);
-    }//GEN-LAST:event_btRaizActionPerformed
 
     private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
         cadena = "";
-        jTextArea1.setText(cadena);
+        jTextArea1.setText(cadena); //imprime la cadena limpia en el JTextArea
     }//GEN-LAST:event_btLimpiarActionPerformed
 
     private void btParIzquierdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btParIzquierdoActionPerformed
-        cadena = cadena + "(";
-        jTextArea1.setText(cadena);
+        cadena = cadena + "("; //añade un ( a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btParIzquierdoActionPerformed
 
     private void btParDerechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btParDerechoActionPerformed
-        cadena = cadena + ")";
-        jTextArea1.setText(cadena);
+        cadena = cadena + ")"; //añade un ) a la cadena
+        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btParDerechoActionPerformed
 
     private void btCambioSignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambioSignoActionPerformed
-        //Agregar acción para cambiar el signo de alguna forma
+        cadena = "-(" + cadena + ")";
     }//GEN-LAST:event_btCambioSignoActionPerformed
 
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
-        //En esta ActionPerformed va todos los métodos para calcular una operación
+        cadena = jTextArea1.getText();
+        try {
+        resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo
+        jTextArea1.setText(String.valueOf(resp));
+        } catch (ExcepcionColeccionVacia error) {
+          error = new ExcepcionColeccionVacia("ERROR");
+          jTextArea1.setText("ERROR");
+          throw error;
+        }
     }//GEN-LAST:event_btIgualActionPerformed
 
     /**
@@ -539,7 +528,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton btParIzquierdo;
     private javax.swing.JButton btPotencia;
     private javax.swing.JButton btPunto;
-    private javax.swing.JButton btRaiz;
     private javax.swing.JButton btResta;
     private javax.swing.JButton btSeis;
     private javax.swing.JButton btSiete;

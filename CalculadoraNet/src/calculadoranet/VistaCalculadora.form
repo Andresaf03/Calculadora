@@ -78,11 +78,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btNueve" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btLimpiar" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btCambioSigno" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="btLimpiar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -95,7 +91,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="btDivision" min="-2" pref="108" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btRaiz" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <Component id="btCambioSigno" min="-2" pref="108" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -125,16 +121,13 @@
                           <Component id="btParDerecho" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btRaiz" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="btDivision" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btDivision" pref="74" max="32767" attributes="0"/>
+                          <Component id="btCambioSigno" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btLimpiar" pref="74" max="32767" attributes="0"/>
-                          <Component id="btCambioSigno" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btLimpiar" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btSiete" pref="74" max="32767" attributes="0"/>
@@ -375,20 +368,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPotenciaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btRaiz">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="99" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="36" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#x221a;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRaizActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btDivision">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -495,7 +474,7 @@
     <Component class="javax.swing.JButton" name="btCambioSigno">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="66" red="33" type="rgb"/>
+          <Color blue="ff" green="33" red="99" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="40" style="0"/>
