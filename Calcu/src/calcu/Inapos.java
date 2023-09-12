@@ -16,6 +16,10 @@ import pilas.RevisorDeParentesis;
  */
 public class Inapos{
     
+    public Inapos(){
+        
+    }
+    
     public ArrayList <String> InaPos(String cadena) {
         ArrayList <String> Caracteres= new ArrayList<String>(); //Creamos arraylist para almacenar numeros
         PilaADT<Character> Operadores = new PilaA(); //Creamos pila para almacenar operadores
@@ -23,7 +27,7 @@ public class Inapos{
         int i;
         String posfija="";
         for(i=0;i<cadena.length();i++){
-                switch(jerarquia(cadena.charAt(i))){
+                switch(Metodos.jerarquia(cadena.charAt(i))){
                     case 0:
                         posfija = posfija + cadena.charAt(i);
                         break;
@@ -31,7 +35,9 @@ public class Inapos{
                         posfija = posfija + cadena.charAt(i);
                         break;
                     case 1:
-                        Caracteres.add(posfija);
+                        if(!posfija.equals("")){
+                            Caracteres.add(posfija);
+                        }
                         posfija="";
                         if(cadena.charAt(i)=='('){
                             Operadores.push(cadena.charAt(i));
@@ -45,27 +51,33 @@ public class Inapos{
                             
                         break;
                     case 3:
+                        if(!posfija.equals("")){
                         Caracteres.add(posfija);
+                        }
                         posfija="";
-                        while(!Operadores.isEmpty() && Operadores.peek().jerarquia >= cadena.charAt(i).jerarquia){
+                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
                             Caracteres.add(String.valueOf(Operadores.pop()));
                             
                         }
                         Operadores.push(cadena.charAt(i));
                         break;
                     case 4:
+                        if(!posfija.equals("")){
                         Caracteres.add(posfija);
+                        }
                         posfija="";
-                        while(!Operadores.isEmpty() && Operadores.peek().jerarquia >= cadena.charAt(i).jerarquia){
+                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
                             Caracteres.add(String.valueOf(Operadores.pop()));
                             
                         }
                         Operadores.push(cadena.charAt(i));
                         break;
                     case 5:
+                        if(!posfija.equals("")){
                         Caracteres.add(posfija);
+                        }
                         posfija="";
-                        while(!Operadores.isEmpty() && Operadores.peek().jerarquia >= cadena.charAt(i).jerarquia){
+                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
                             Caracteres.add(String.valueOf(Operadores.pop()));
                             
                         }
@@ -73,7 +85,9 @@ public class Inapos{
                         break;
                 }
            }
+        if(!posfija.equals("")){
            Caracteres.add(posfija);
+        }
            while(!Operadores.isEmpty())
                Caracteres.add(String.valueOf(Operadores.pop()));
            return Caracteres;
