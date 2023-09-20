@@ -26,7 +26,7 @@ public class InAPos {
      * @param cadena una expresión matemática en notación infija.
      * @return ArrayList con la expresión postfija.
      */
-    public static ArrayList <String> InaPos(String cadena) {
+    public static ArrayList <String> inAPos(String cadena) {
         ArrayList <String> Caracteres= new ArrayList<String>(); //Creamos arraylist para almacenar numeros
         PilaADT<Character> Operadores = new PilaA(); //Creamos pila para almacenar operadores
         boolean bandera=false;

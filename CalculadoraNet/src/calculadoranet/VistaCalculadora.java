@@ -533,14 +533,9 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * @return double, la respuesta de la operación en notación postfija.
      */
     public double respuesta(String cadena1) {
-        if(cadena.equals("")) {
-           jTextArea1.setText("INGRESA UNA OPERACIÓN");
-           ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
-           throw error;
-       }
         if(Metodos.revisorCadena(cadena1)) {
             try {
-            resp = InAPos.calcula(InAPos.InaPos(cadena1)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  
+            resp = InAPos.calcula(InAPos.inAPos(cadena1)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  
             } catch (ExcepcionColeccionVacia error){
                 cadena="";
                 jTextArea1.setText("ERROR");
@@ -557,6 +552,11 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }
     
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
+        if(cadena.equals("")) {
+           jTextArea1.setText("INGRESA UNA OPERACIÓN");
+           ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
+           throw error;
+        }
         resp =respuesta(cadena); //calcula el resultado con la ayuda del método auxiliar respuesta
         if(resp>=0) {
             cadena=String.valueOf(resp);

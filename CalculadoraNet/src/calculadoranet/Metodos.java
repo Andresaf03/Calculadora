@@ -111,7 +111,10 @@ public class Metodos {
         boolean res = true;
         int size = cadena.length();
         int i = 0;
-        if(inPrin(cadena.charAt(0)) && inFin(cadena.charAt(cadena.length()-1))){ //No puede haber operadores al inicio o final
+        if(cadena.equals("")) {
+            return res=false;
+        }
+        if(inPrinFin(cadena.charAt(0)) && inPrinFin(cadena.charAt(cadena.length()-1)) && res){ //No puede haber operadores al inicio o final
             if(revisor(cadena)){//Revisa que los parentesis funcionen
                 while(i < size-1 && res){
                     if(jerarquia(cadena.charAt(i))>1 && jerarquia(cadena.charAt(i+1))>1){//Revisa que no haya operadores juntos
@@ -132,14 +135,14 @@ public class Metodos {
     }
     
     /**
-     * Método que evalúa si no hay operadores al final de una cadena, exceptuando paréntesis.
-     * @param c, un caractér, particularmente el primero de la cadena.
+     * Método que evalúa si no hay operadores al inicio o final de una cadena, exceptuando paréntesis.
+     * @param c, un caractér, particularmente el primero o último de la cadena.
      * @return <ul> 
-     *  <li> True: si no hay operadores al final de la cadena/entrada.
-     *  <li> False: si hay operadores al final de la cadena/entrada.
+     *  <li> True: si no hay operadores al inicio o final de la cadena/entrada.
+     *  <li> False: si hay operadores al inicio o final de la cadena/entrada.
      * </ul>
      */
-    public static boolean inFin(char c){
+    public static boolean inPrinFin(char c){
         boolean res = false;
         switch(jerarquia(c)){
             case 0:
@@ -149,21 +152,4 @@ public class Metodos {
         return res;
     }
     
-    /**
-     * Método que evalúa si no hay operadores al inicio de una cadena.
-     * @param c, un caractér, particularmente el primero de la cadena.
-     * @return <ul> 
-     *  <li> True: si no hay operadores al inicio de la cadena/entrada.
-     *  <li> False: si hay operadores al inicio de la cadena/entrada.
-     * </ul>
-     */
-    public static boolean inPrin(char c){
-        boolean res = false;
-        switch(jerarquia(c)){
-            case 0:
-            case 1:
-                res = true;
-        }
-        return res;
-    }
 }
