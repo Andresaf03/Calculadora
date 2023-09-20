@@ -462,7 +462,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     /**
      * Método que recibe una cadena y cambia el signo del último número insertado en la cadena.
-     * @see Metodos.jeraquia.
      * @param cadena una cadena que es una expresión matemática en notación infija.
      * @return String con la conversión de la cadena a notación postfija.
      */
@@ -530,7 +529,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * Calcula la expresión en notacióin postfija con el método calcula de la clase InAPos.
      * Si es válida la expresión, imprime la cadena en la JTextArea, si no, imprimer "ERROR".
      * </pre>
-     * @see Metodos.revisorCadena y InAPos.calcula, InAPos.Inapos
      * @param cadena1 una cadena que es una expresión matemática.
      * @return double, la respuesta de la operación en notación postfija.
      */
