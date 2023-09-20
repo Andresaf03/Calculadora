@@ -466,10 +466,9 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * @return String
      */
     public String cambiaSigno(String cadena) {
-        int i=cadena.length()-1, j;
-       String aux1="", aux2="", auxCadena="";
-       int rep;
-       PilaADT <Integer> un = new PilaA();
+       int i=cadena.length()-1, j=0, n;
+       String aux1="", aux2="", auxCadena="", auxCadena2="";
+       int contador=0;
        boolean bandera = false;
        while(i>=0 && !bandera) {
            if(Metodos.jerarquia(cadena.charAt(i))>=3) {
@@ -498,19 +497,18 @@ public class VistaCalculadora extends javax.swing.JFrame {
                i++;
            }
            while(cadena.charAt(j)!= '(' ) {
-               if(InAPos.isNumeric(String.valueOf(cadena.charAt(j)))) {
-                   rep=Integer.parseInt(String.valueOf(cadena.charAt(j)));
-                   un.push(rep);
-                   j--;
-               } else {
-                   j--;
-               }
+               contador++;
+               j--;
+           } 
+           contador--;
+           n=j+contador;
+           for(i=j+2; i<=n; i++) {
+               auxCadena2=auxCadena2+cadena.charAt(i);
            }
-           while(!un.isEmpty()) {
-               auxCadena=auxCadena + String.valueOf(un.pop());
-           }
+           auxCadena=auxCadena+auxCadena2;
            cadena = auxCadena;
-       }
+        }
+       
        return cadena;
     }
     
