@@ -5,13 +5,12 @@
 package calculadoranet;
 
 /**
- *
- * @author andres
+ * Interfaz que obliga a cualquier clase que la implemente a incluir los métodos que se declaran.
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano.
  */
-public interface PilaADT <T>{
+public interface PilaADT <T> {
     public void push(T dato);
     public T pop();
     public boolean isEmpty();
     public T peek();
-    public void multiPop(int n);
 }

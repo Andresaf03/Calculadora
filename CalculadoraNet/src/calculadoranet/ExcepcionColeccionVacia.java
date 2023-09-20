@@ -5,8 +5,8 @@
 package calculadoranet;
 
 /**
- *
- * @author andres
+ * Clase que crea una excepción particular que hereda la clase RunTimeException.
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano.
  */
 public class ExcepcionColeccionVacia extends RuntimeException {
     
@@ -14,6 +14,10 @@ public class ExcepcionColeccionVacia extends RuntimeException {
         
     }
     
+    /**
+     * Crea una excepción que regresa una cadena con el mensaje que se introduzca como error.
+     * @param message el mensaje que se quiera arrojar como error.
+     */
     public ExcepcionColeccionVacia(String message) {
         super(message);
     }

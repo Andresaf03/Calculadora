@@ -7,8 +7,8 @@ package calculadoranet;
 import java.util.ArrayList;
 
 /**
- * Clase que contiene los métodos de la conversión de notación infija a postfija y el cálculo en notación postfija
- * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano
+ * Clase que contiene los métodos de la conversión de notación infija a postfija y el cálculo en notación postfija.
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano.
  */
 public class InAPos {
     /**
@@ -23,7 +23,7 @@ public class InAPos {
      *  <li> Paréntesis: si es un paréntesis izquierdo lo añade a una pila, si es derecho, añade los operadores hasta el paréntesis izquierdo al ArrayList.
      *  <li> Operadores: los añade a la pila o al ArrayList dependiendo de su jerarquía mayor o menor al operador que esté en la pila.
      * </ul>
-     * @param cadena
+     * @param cadena una expresión matemática en notación infija.
      * @return ArrayList con la expresión postfija.
      */
     public static ArrayList <String> InaPos(String cadena) {
@@ -110,7 +110,7 @@ public class InAPos {
     
     /**
      * Evalua si una cadena es un número.
-     * @param cadena
+     * @param cadena una expresión (cadena).
      * @return Boolean <ul> 
      *  <li> True: si la cadena es una expresión numérica.
      *  <li> False: si la cadena no es una expresión numérica.
@@ -137,7 +137,7 @@ public class InAPos {
      *  <li> Si es un número lo guarda en una pila de tal forma que se formen parejas.
      *  <li> Si es un operador, dependiendo de cual sea, realiza la operación entre la pareja de números en la pila.
      * </ul> 
-     * @param Caracteres
+     * @param Caracteres un ArrayList de tipo String que contiene la notación postfija.
      * @return Double de la expresión evaluada.
      */
     public static double calcula(ArrayList<String> Caracteres){

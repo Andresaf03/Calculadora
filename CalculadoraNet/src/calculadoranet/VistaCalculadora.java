@@ -6,8 +6,8 @@ package calculadoranet;
  */
 
 /**
- * Clase VistaCalculadora que genera la interfaz gráfica de una calculadora utilizando las clases Metodos y InAPos
- * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano
+ * Clase VistaCalculadora que genera la interfaz gráfica de una calculadora utilizando las clases Metodos y InAPos.
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano.
  */
 public class VistaCalculadora extends javax.swing.JFrame {
 
@@ -16,7 +16,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
     private double resp;
     
     /**
-     * Construye una nueva forma de la VistaCalculadora
+     * Construye una nueva forma de la VistaCalculadora.
      */
     public VistaCalculadora() {
         initComponents();
@@ -462,8 +462,8 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     /**
      * Método que recibe una cadena y cambia el signo del último número insertado en la cadena.
-     * @param cadena
-     * @return String
+     * @param cadena unna cadena que es una expresión matemática en notación infija.
+     * @return String con la conversión de la cadena a notación postfija.
      */
     public String cambiaSigno(String cadena) {
        int i=cadena.length()-1, j=0, n;
@@ -524,8 +524,8 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * Calcula la expresión en notacióin postfija con el método calcula de la clase InAPos.
      * Si es válida la expresión, imprime la cadena en la JTextArea, si no, imprimer "ERROR".
      * </pre>
-     * @param cadena 
-     * @return double, la respuesta de la operación.
+     * @param cadena una cadena que es una expresión matemática.
+     * @return double, la respuesta de la operación en notación postfija.
      */
     public double respuesta(String cadena) {
         if(Metodos.revisorCadena(cadena)) {
@@ -550,7 +550,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     /**
      * Main que ejecuta y corre la vista de la calculadora
-     * @param args la línea de comando de los argumentos
+     * @param args la línea de comando de los argumentos.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

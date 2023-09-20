@@ -19,7 +19,7 @@ public class Metodos {
      * Método que revisa que los paréntesis estén balanceados.
      * Recibe una cadena.
      * </pre>
-     * @param cadena
+     * @param cadena una expresión matemática en notación infija.
      * @return Boolean <ul> 
      *  <li> True: si los paréntesis están balanceados.
      *  <li> False: si los paréntesis no están balanceados.
@@ -62,7 +62,7 @@ public class Metodos {
      *  <li> 4 si es una multiplicación o una división.
      *  <li> 5 si es una operación de potencia.
      * </ul>
-     * @param signo, un caractér particular.
+     * @param signo un caractér particular.
      * @return int 
      */
     public static int jerarquia(char signo) {
@@ -101,7 +101,7 @@ public class Metodos {
      * Método que revisa que no haya errores de sintaxis en la entrada de la cadena ni caracteres incorrectos.
      * Recibe una cadena.
      * </pre>
-     * @param cadena
+     * @param cadena una expresión matemática en notación infija.
      * @return <ul> 
      *  <li> True: si la cadena es correcta.
      *  <li> False: si la cadena no es correcta.
