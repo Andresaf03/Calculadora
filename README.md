@@ -2,6 +2,7 @@
 <pre>
   Calculadora para la materia de Estructuras de Datos.
   Esta calculadora es capaz de:
+</pre>
   <ul>
     <li> Realizar operaciones de suma, resta, multiplicación, división y potencia. </li>
     <li> Ingresar expresiones matemáticas que incluyan una combinación de las operaciones mencionadas en el punto anterior. </li>
@@ -31,5 +32,4 @@
     <li> Luis Arguelles Dib </li>
     <li> Andrés Sámano Hakim </li>
   </ul>
-</pre>
 
