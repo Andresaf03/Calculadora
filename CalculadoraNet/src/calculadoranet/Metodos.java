@@ -7,13 +7,24 @@ package calculadoranet;
 import static java.lang.Character.isDigit;
 
 /**
- *
- * @author andres
+ * Clase que contiene los métodos para revisar las expresiones de la calculadora y establecer la jerarquía de las operaciones
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano
  */
 public class Metodos {
-    
+    //atributo de la clase
     private PilaA<Character> pil;
 
+    /**
+     * <pre>
+     * Método que revisa que los paréntesis estén balanceados.
+     * Recibe una cadena.
+     * </pre>
+     * @param cadena
+     * @return Boolean <ul> 
+     *  <li> True: si los paréntesis están balanceados.
+     *  <li> False: si los paréntesis no están balanceados.
+     * </ul>
+     */
     public static boolean revisor(String cadena) {
         PilaA<String> a= new PilaA();
         boolean resp = true;
@@ -37,6 +48,23 @@ public class Metodos {
         return resp;
     }
     
+    /**
+     * <pre>
+     * Método que clasifica a las posibles entradas de los caracteres de la cadena según una jerarquía.
+     * Recibe un caracter y hay 7 casos:
+     * </pre>
+     * <ul> 
+     *  <li> -1 si el caracter no es admisible (i.e una letra o un caracter que no sea un operador).
+     *  <li> 0 si el caracter es un número.
+     *  <li> 1 si es un paréntesis.
+     *  <li> 2 si es un punto decimal.
+     *  <li> 3 si es suma o si es una resta.
+     *  <li> 4 si es una multiplicación o una división.
+     *  <li> 5 si es una operación de potencia.
+     * </ul>
+     * @param signo, un caractér particular.
+     * @return int 
+     */
      public static int jerarquia(char signo) {
     int res = -1; //Todos los valores que no sean enteros o se contengan en un caso regresan -1
 
@@ -68,6 +96,17 @@ public class Metodos {
     return res;
     }
      
+    /**
+     * <pre>
+     * Método que revisa que no haya errores de sintaxis en la entrada de la cadena ni caracteres incorrectos.
+     * Recibe una cadena.
+     * </pre>
+     * @param cadena
+     * @return <ul> 
+     *  <li> True: si la cadena es correcta.
+     *  <li> False: si la cadena no es correcta.
+     * </ul>
+     */
     public static boolean revisorCadena(String cadena){
         boolean res = true;
         int size = cadena.length();
@@ -96,7 +135,14 @@ public class Metodos {
         return res;
     }
     
-     //Metodo para revisar que no haya operadores al final de la cadena, exceptuando el menos
+    /**
+     * Método que evalúa si no hay operadores al final de una cadena, exceptuando paréntesis.
+     * @param c, un caractér.
+     * @return <ul> 
+     *  <li> True: si no hay operadores al final de la cadena/entrada.
+     *  <li> False: si hay operadores al final de la cadena/entrada.
+     * </ul>
+     */
     public static boolean inFin(char c){
         boolean res = false;
         switch(jerarquia(c)){
@@ -108,7 +154,14 @@ public class Metodos {
         return res;
     }
     
-    //Metodo para revisar que no haya operadores al principio sin contar el menos para los numero negativos
+    /**
+     * Método que evalúa si no hay operadores al inicio de una cadena.
+     * @param c, un caractér.
+     * @return <ul> 
+     *  <li> True: si no hay operadores al inicio de la cadena/entrada.
+     *  <li> False: si hay operadores al inicio de la cadena/entrada.
+     * </ul>
+     */
     public static boolean inPrin(char c){
         boolean res = false;
         switch(jerarquia(c)){

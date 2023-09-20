@@ -7,10 +7,25 @@ package calculadoranet;
 import java.util.ArrayList;
 
 /**
- *
- * @author andres
+ * Clase que contiene los métodos de la conversión de notación infija a postfija y el cálculo en notación postfija
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano
  */
 public class InAPos {
+    /**
+     * <pre>
+     * Método que convierte una expresión en notación infija a postfija.
+     * Contiene un switch que actúa difererente dependiendo de la jerarquía del caractér que reciba:
+     * </pre>
+     * <ul>
+     *  <li> Número: añade el dígito a una cadena que concatena por si son números de más de una cifra. 
+     *       Si se encuentra un negativo lo multiplica por menos 1 para obtener su valor positivo y concatenar un menos.
+     *  <li> Punto: concatena el punto en la cadena.
+     *  <li> Paréntesis: si es un paréntesis izquierdo lo añade a una pila, si es derecho, añade los operadores hasta el paréntesis izquierdo al ArrayList.
+     *  <li> Operadores: los añade a la pila o al ArrayList dependiendo de su jerarquía mayor o menor al operador que esté en la pila.
+     * </ul>
+     * @param cadena
+     * @return ArrayList con la expresión postfija.
+     */
     public static ArrayList <String> InaPos(String cadena) {
         ArrayList <String> Caracteres= new ArrayList<String>(); //Creamos arraylist para almacenar numeros
         PilaADT<Character> Operadores = new PilaA(); //Creamos pila para almacenar operadores
@@ -99,6 +114,14 @@ public class InAPos {
       
         }
     
+    /**
+     * Evalua si una cadena es un número.
+     * @param cadena
+     * @return Boolean <ul> 
+     *  <li> True: si la cadena es una expresión numérica.
+     *  <li> False: si la cadena no es una expresión numérica.
+     * </ul>
+     */
     public static boolean isNumeric(String cadena){
         boolean resp;
         try{
@@ -112,6 +135,19 @@ public class InAPos {
         
     }
     
+    /**
+     * <pre>
+     * Método que calcula una expresión postfija.
+     * Recibe un ArrayList con la expresión postfija.
+     * Igualmente, hay dos casos:
+     * </pre>
+     * <ul>
+     *  <li> Si es un número lo guarda en una pila de tal forma que se formen parejas.
+     *  <li> Si es un operador, dependiendo de cual sea, realiza la operación entre la pareja de números en la pila.
+     * </ul> 
+     * @param Caracteres
+     * @return Double de la expresión evaluada.
+     */
     public static double calcula(ArrayList<String> Caracteres){
         
         int i;

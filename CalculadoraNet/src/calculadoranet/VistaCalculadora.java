@@ -6,17 +6,17 @@ package calculadoranet;
  */
 
 /**
- *
- * @author andres
+ * Clase VistaCalculadora que genera la interfaz gráfica de una calculadora utilizando las clases Metodos y InAPos
+ * @author Andrés Álvarez, Nicolás Álvarez, Luis Arguelles, Andrés Sámano
  */
 public class VistaCalculadora extends javax.swing.JFrame {
 
     //atributos de la calculadora propia
     private String cadena="";
-    double resp;
+    private double resp;
     
     /**
-     * Creates new form VistaCalculadora
+     * Construye una nueva forma de la VistaCalculadora
      */
     public VistaCalculadora() {
         initComponents();
@@ -460,9 +460,16 @@ public class VistaCalculadora extends javax.swing.JFrame {
         jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btParDerechoActionPerformed
 
-    private void btCambioSignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambioSignoActionPerformed
-       int i=cadena.length()-1, j;
-       String aux1="", aux2="";
+    /**
+     * Método que recibe una cadena y cambia el signo del último número insertado en la cadena.
+     * @param cadena
+     * @return String
+     */
+    public String cambiaSigno(String cadena) {
+        int i=cadena.length()-1, j;
+       String aux1="", aux2="", auxCadena="";
+       int rep;
+       PilaADT <Integer> un = new PilaA();
        boolean bandera = false;
        while(i>=0 && !bandera) {
            if(Metodos.jerarquia(cadena.charAt(i))>=3) {
@@ -478,17 +485,54 @@ public class VistaCalculadora extends javax.swing.JFrame {
        for(j=i+1; j<cadena.length(); j++) {
            aux2 = aux2 + cadena.charAt(j);
        }
+       
+       if(Metodos.jerarquia(cadena.charAt(j-1))!=1) {
        aux1=aux1 + "(" + "-";
        aux2=aux2 + ")";
        cadena=aux1 + aux2;
-        jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
+       } else {
+           j--;
+           i=0;
+           while(cadena.charAt(i)!='(' || cadena.charAt(i+1)!='-') {
+               auxCadena=auxCadena + cadena.charAt(i);
+               i++;
+           }
+           while(cadena.charAt(j)!= '(' ) {
+               if(InAPos.isNumeric(String.valueOf(cadena.charAt(j)))) {
+                   rep=Integer.parseInt(String.valueOf(cadena.charAt(j)));
+                   un.push(rep);
+                   j--;
+               } else {
+                   j--;
+               }
+           }
+           while(!un.isEmpty()) {
+               auxCadena=auxCadena + String.valueOf(un.pop());
+           }
+           cadena = auxCadena;
+       }
+       return cadena;
+    }
+    
+    //cambia el signo de la cadena con la ayuda del método auxiliar cambiaSigno
+    private void btCambioSignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambioSignoActionPerformed
+       cadena=cambiaSigno(cadena);
+       jTextArea1.setText(cadena); //imprime la cadena en el JTextArea
     }//GEN-LAST:event_btCambioSignoActionPerformed
-
-    private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
-        cadena = jTextArea1.getText();
+    
+    /**
+     * <pre>
+     * Método que recibe de la JTextArea una cadena en notación infija.
+     * Convierte la cadena en notación infija a postfija con el método Inapos de la clase InAPos.
+     * Calcula la expresión en notacióin postfija con el método calcula de la clase InAPos.
+     * Si es válida la expresión, imprime la cadena en la JTextArea, si no, imprimer "ERROR".
+     * </pre>
+     * @param cadena 
+     * @return double, la respuesta de la operación.
+     */
+    public double respuesta(String cadena) {
         try {
         resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo
-        jTextArea1.setText(String.valueOf(resp));
         cadena = "";
         } catch (ExcepcionColeccionVacia error) {
             cadena = "";
@@ -496,10 +540,16 @@ public class VistaCalculadora extends javax.swing.JFrame {
           jTextArea1.setText("ERROR");
           throw error;
         }
+        return resp;
+    }
+    private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
+        resp =respuesta(cadena); //calcula el resultado con la ayuda del método auxiliar respuesta
+        jTextArea1.setText(String.valueOf(resp)); //imprime el resultado en la jTextArea1
     }//GEN-LAST:event_btIgualActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Main que ejecuta y corre la vista de la calculadora
+     * @param args la línea de comando de los argumentos
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -532,7 +582,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCambioSigno;
     private javax.swing.JButton btCero;
