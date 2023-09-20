@@ -225,7 +225,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
         });
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Helvetica Neue", 0, 28)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -533,7 +533,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
     public double respuesta(String cadena) {
         try {
         resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo
-        cadena = "";
         } catch (ExcepcionColeccionVacia error) {
             cadena = "";
           error = new ExcepcionColeccionVacia("ERROR");
@@ -544,7 +543,12 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
         resp =respuesta(cadena); //calcula el resultado con la ayuda del método auxiliar respuesta
-        jTextArea1.setText(String.valueOf(resp)); //imprime el resultado en la jTextArea1
+        if(resp>=0) {
+            cadena=String.valueOf(resp);
+        } else {
+            cadena="(" + String.valueOf(resp) + ")";
+        }
+        jTextArea1.setText(cadena); //imprime el resultado en la jTextArea1
     }//GEN-LAST:event_btIgualActionPerformed
 
     /**
