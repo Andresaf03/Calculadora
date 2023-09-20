@@ -524,20 +524,28 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * Calcula la expresión en notacióin postfija con el método calcula de la clase InAPos.
      * Si es válida la expresión, imprime la cadena en la JTextArea, si no, imprimer "ERROR".
      * </pre>
-     * @param cadena una cadena que es una expresión matemática.
+     * @param cadena1 una cadena que es una expresión matemática.
      * @return double, la respuesta de la operación en notación postfija.
      */
-    public double respuesta(String cadena) {
-        if(Metodos.revisorCadena(cadena)) {
-            resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  
+    public double respuesta(String cadena1) {
+        if(Metodos.revisorCadena(cadena1)) {
+            try {
+            resp = InAPos.calcula(InAPos.InaPos(cadena1)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  
+            } catch (ExcepcionColeccionVacia error){
+                cadena="";
+                jTextArea1.setText("ERROR");
+                error = new ExcepcionColeccionVacia("ERROR");
+                throw error;
+            }
         } else {
-            cadena = "";
-            ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR");
+            cadena="";
             jTextArea1.setText("ERROR");
+            ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR");
             throw error;
         }
         return resp;
     }
+    
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
         resp =respuesta(cadena); //calcula el resultado con la ayuda del método auxiliar respuesta
         if(resp>=0) {

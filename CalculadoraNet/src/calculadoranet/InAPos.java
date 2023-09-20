@@ -142,7 +142,7 @@ public class InAPos {
      */
     public static double calcula(ArrayList<String> Caracteres){
         int i;
-        double aux, num, resp=0;
+        double aux, num, resp=0, resultado=0;
         String cadena;
         PilaADT <Double> a = new PilaA();
        
@@ -174,6 +174,12 @@ public class InAPos {
                 a.push(resp);
              }
         }
-        return a.pop();
+        resultado=a.pop();
+        if(a.isEmpty()) {
+            return resultado;
+        } else {
+            ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR");
+            throw error;
+        }
     }
 }
