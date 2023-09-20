@@ -462,10 +462,16 @@ public class VistaCalculadora extends javax.swing.JFrame {
 
     /**
      * Método que recibe una cadena y cambia el signo del último número insertado en la cadena.
-     * @param cadena unna cadena que es una expresión matemática en notación infija.
+     * @see Metodos.jeraquia.
+     * @param cadena una cadena que es una expresión matemática en notación infija.
      * @return String con la conversión de la cadena a notación postfija.
      */
     public String cambiaSigno(String cadena) {
+       if(cadena.equals("")) {
+           jTextArea1.setText("INGRESA UNA OPERACIÓN");
+           ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
+           throw error;
+       }
        int i=cadena.length()-1, j=0, n;
        String aux1="", aux2="", auxCadena="", auxCadena2="";
        int contador=0;
@@ -524,10 +530,16 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * Calcula la expresión en notacióin postfija con el método calcula de la clase InAPos.
      * Si es válida la expresión, imprime la cadena en la JTextArea, si no, imprimer "ERROR".
      * </pre>
+     * @see Metodos.revisorCadena y InAPos.calcula, InAPos.Inapos
      * @param cadena1 una cadena que es una expresión matemática.
      * @return double, la respuesta de la operación en notación postfija.
      */
     public double respuesta(String cadena1) {
+        if(cadena.equals("")) {
+           jTextArea1.setText("INGRESA UNA OPERACIÓN");
+           ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
+           throw error;
+       }
         if(Metodos.revisorCadena(cadena1)) {
             try {
             resp = InAPos.calcula(InAPos.InaPos(cadena1)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  

@@ -19,6 +19,7 @@ public class Metodos {
      * Método que revisa que los paréntesis estén balanceados.
      * Recibe una cadena.
      * </pre>
+     * @see PilaA.isEmpty, PilA.pop, PilaA.push.
      * @param cadena una expresión matemática en notación infija.
      * @return Boolean <ul> 
      *  <li> True: si los paréntesis están balanceados.
@@ -101,6 +102,7 @@ public class Metodos {
      * Método que revisa que no haya errores de sintaxis en la entrada de la cadena ni caracteres incorrectos.
      * Recibe una cadena.
      * </pre>
+     * @see inPrin, inFin, jerarquia.
      * @param cadena una expresión matemática en notación infija.
      * @return <ul> 
      *  <li> True: si la cadena es correcta.
@@ -133,7 +135,7 @@ public class Metodos {
     
     /**
      * Método que evalúa si no hay operadores al final de una cadena, exceptuando paréntesis.
-     * @param c, un caractér, particularmente el primero de la cadena..
+     * @param c, un caractér, particularmente el primero de la cadena.
      * @return <ul> 
      *  <li> True: si no hay operadores al final de la cadena/entrada.
      *  <li> False: si hay operadores al final de la cadena/entrada.
