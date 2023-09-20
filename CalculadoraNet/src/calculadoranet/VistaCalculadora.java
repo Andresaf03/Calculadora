@@ -508,7 +508,6 @@ public class VistaCalculadora extends javax.swing.JFrame {
            auxCadena=auxCadena+auxCadena2;
            cadena = auxCadena;
         }
-       
        return cadena;
     }
     
@@ -529,13 +528,13 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * @return double, la respuesta de la operación.
      */
     public double respuesta(String cadena) {
-        try {
-        resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo
-        } catch (ExcepcionColeccionVacia error) {
+        if(Metodos.revisorCadena(cadena)) {
+            resp = InAPos.calcula(InAPos.InaPos(cadena)); //intenta calcular haciendo la conversion de infijo a postfijo y luego calculando postfijo  
+        } else {
             cadena = "";
-          error = new ExcepcionColeccionVacia("ERROR");
-          jTextArea1.setText("ERROR");
-          throw error;
+            ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR");
+            jTextArea1.setText("ERROR");
+            throw error;
         }
         return resp;
     }

@@ -42,77 +42,71 @@ public class InAPos {
                             posfija=String.valueOf(negativo);
                             bandera = false;
                         }
-                        break;
-                    case 2:
-                        posfija = posfija + cadena.charAt(i);
-                        break;
+                    break;
                     case 1:
                         if(!posfija.equals("")){
                             Caracteres.add(posfija);
                         }
                         posfija="";
-                        
+
                         if(cadena.charAt(i)=='(' && cadena.charAt(i+1)=='-' && i<cadena.length()-1 && !bandera) {
                             bandera = true;
                         }
-                        
+
                         if(cadena.charAt(i)=='('){
                             Operadores.push(cadena.charAt(i));
-                        }
-                        
-                        else{
-                            while(Operadores.peek()!='('){
+                        } else{
+                            while(Operadores.peek()!='(') { 
                                 Caracteres.add(String.valueOf(Operadores.pop()));
                             }
                             Operadores.pop();
-                        }
-                            
-                        break;
-                         case 3:
+                        }  
+                    break;
+                    case 2:
+                        posfija = posfija + cadena.charAt(i);
+                    break;
+                    case 3:
                         if(!posfija.equals("")){
-                        Caracteres.add(posfija);
+                            Caracteres.add(posfija);
                         }
                         if(!bandera) {
                             posfija="";
                             while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
                                 Caracteres.add(String.valueOf(Operadores.pop()));
-                            
                             }
                             Operadores.push(cadena.charAt(i));
                         }
-                        break;
+                    break;
                     case 4:
                         if(!posfija.equals("")){
-                        Caracteres.add(posfija);
+                            Caracteres.add(posfija);
                         }
                         posfija="";
-                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
+                        while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))) {
                             Caracteres.add(String.valueOf(Operadores.pop()));
-                            
                         }
                         Operadores.push(cadena.charAt(i));
-                        break;
+                    break;
                     case 5:
                         if(!posfija.equals("")){
-                        Caracteres.add(posfija);
+                            Caracteres.add(posfija);
                         }
                         posfija="";
                         while(!Operadores.isEmpty() && Metodos.jerarquia(Operadores.peek()) >= Metodos.jerarquia(cadena.charAt(i))){
                             Caracteres.add(String.valueOf(Operadores.pop()));
-                            
                         }
                         Operadores.push(cadena.charAt(i));
-                        break;
-                }
-           }
+                    break;
+            }
+        }
         if(!posfija.equals("")){
-           Caracteres.add(posfija);
+            Caracteres.add(posfija);
         }
-           while(!Operadores.isEmpty())
-               Caracteres.add(String.valueOf(Operadores.pop()));
-           return Caracteres;
-      
+        while(!Operadores.isEmpty()) {
+           Caracteres.add(String.valueOf(Operadores.pop()));
         }
+       return Caracteres;
+    }
     
     /**
      * Evalua si una cadena es un número.
@@ -130,9 +124,7 @@ public class InAPos {
         }catch(NumberFormatException excepcion){
             resp = false;
         }
-        
         return resp;
-        
     }
     
     /**
@@ -149,21 +141,16 @@ public class InAPos {
      * @return Double de la expresión evaluada.
      */
     public static double calcula(ArrayList<String> Caracteres){
-        
         int i;
-        double aux;
-        double num;
-        double resp=0;
+        double aux, num, resp=0;
         String cadena;
         PilaADT <Double> a = new PilaA();
-        
        
         for(i=0;i<Caracteres.size();i++){
             cadena = Caracteres.get(i);
             if(isNumeric(Caracteres.get(i))){
                 a.push((Double.parseDouble(Caracteres.get(i))));
-            }
-            else{
+            } else{
                 num = a.pop();
                 aux = a.pop();
                 
@@ -184,15 +171,9 @@ public class InAPos {
                         resp = Math.pow(aux, num);
                         break;
                 }
-                
                 a.push(resp);
-                
              }
-                
         }
-        
         return a.pop();
-
-        
     }
 }

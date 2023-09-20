@@ -32,19 +32,19 @@ public class Metodos {
         while (i < cadena.length() && resp) {
             if (cadena.charAt(i)=='(') {
                 a.push("(");    
-            }
-            else
+            } else {
                 if (cadena.charAt(i)==')') {
                     if(a.isEmpty())
                         resp = false;
                     else
                         a.pop();    
                 }  
+            }
             i++;
         }
-        if(!a.isEmpty())
+        if(!a.isEmpty()) {
             resp = false;
-        
+        }
         return resp;
     }
     
@@ -65,7 +65,7 @@ public class Metodos {
      * @param signo, un caractér particular.
      * @return int 
      */
-     public static int jerarquia(char signo) {
+    public static int jerarquia(char signo) {
     int res = -1; //Todos los valores que no sean enteros o se contengan en un caso regresan -1
 
     if (isDigit(signo)) { //Revisa que el valor sea o no entero
@@ -121,23 +121,19 @@ public class Metodos {
                         res = false; 
                     }
                     i++;
-                }
-                                   
-            }
-            else {
+                }                  
+            } else {
                 res=false;
             }
-        }
-        else {
+        } else {
             res=false;
         }
-        
         return res;
     }
     
     /**
      * Método que evalúa si no hay operadores al final de una cadena, exceptuando paréntesis.
-     * @param c, un caractér.
+     * @param c, un caractér, particularmente el primero de la cadena..
      * @return <ul> 
      *  <li> True: si no hay operadores al final de la cadena/entrada.
      *  <li> False: si hay operadores al final de la cadena/entrada.
@@ -150,13 +146,12 @@ public class Metodos {
             case 1:
                 res = true;
         }
-        
         return res;
     }
     
     /**
      * Método que evalúa si no hay operadores al inicio de una cadena.
-     * @param c, un caractér.
+     * @param c, un caractér, particularmente el primero de la cadena.
      * @return <ul> 
      *  <li> True: si no hay operadores al inicio de la cadena/entrada.
      *  <li> False: si hay operadores al inicio de la cadena/entrada.
@@ -169,10 +164,6 @@ public class Metodos {
             case 1:
                 res = true;
         }
-        if(c=='-') {
-            res=true;
-        }
-        
         return res;
     }
 }
