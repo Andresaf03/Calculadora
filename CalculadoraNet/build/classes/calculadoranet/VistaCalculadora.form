@@ -44,61 +44,65 @@
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btUno" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btDos" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btTres" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btSuma" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btResta" min="-2" pref="108" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btCero" min="-2" pref="222" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btPunto" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btIgual" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btCuatro" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btCuatro" pref="108" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btCinco" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btCinco" pref="108" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btSeis" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btSeis" pref="108" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btSiete" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btSiete" pref="108" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btOcho" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btOcho" pref="108" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btNueve" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btNueve" pref="108" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="btLimpiar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btMultiplicacion" min="-2" pref="108" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btPotencia" min="-2" pref="108" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="btDivision" min="-2" pref="108" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btCambioSigno" min="-2" pref="108" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btMultiplicacion" pref="108" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btPotencia" pref="108" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btDivision" pref="108" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btCambioSigno" pref="108" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="btParIzquierdo" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btParDerecho" max="32767" attributes="0"/>
                                   </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btUno" pref="108" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btDos" pref="108" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="btCero" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btPunto" max="32767" attributes="0"/>
+                                  <Component id="btTres" pref="108" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btSuma" pref="108" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btResta" pref="108" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="btIgual" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -115,56 +119,39 @@
               <Component id="jScrollPane1" pref="99" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btParIzquierdo" pref="74" max="32767" attributes="0"/>
-                          <Component id="btParDerecho" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btDivision" pref="74" max="32767" attributes="0"/>
-                          <Component id="btCambioSigno" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btLimpiar" min="-2" pref="74" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btSiete" pref="74" max="32767" attributes="0"/>
-                          <Component id="btOcho" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btNueve" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="btLimpiar" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btParDerecho" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                  <Component id="btParIzquierdo" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btCuatro" alignment="1" pref="74" max="32767" attributes="0"/>
-                      <Component id="btCinco" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btSeis" alignment="1" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="btPotencia" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="btMultiplicacion" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btOcho" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btCambioSigno" alignment="1" pref="74" max="32767" attributes="0"/>
+                  <Component id="btSiete" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btNueve" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btDivision" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btSuma" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="btResta" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="btTres" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btDos" alignment="0" pref="74" max="32767" attributes="0"/>
-                      <Component id="btUno" alignment="1" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btMultiplicacion" alignment="1" pref="74" max="32767" attributes="0"/>
+                  <Component id="btCuatro" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btCinco" max="32767" attributes="0"/>
+                  <Component id="btSeis" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btPotencia" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="6" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btCero" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                  <Component id="btIgual" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                  <Component id="btPunto" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btResta" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btUno" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btDos" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btSuma" alignment="0" pref="74" max="32767" attributes="0"/>
+                  <Component id="btTres" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btIgual" pref="74" max="32767" attributes="0"/>
+                  <Component id="btPunto" max="32767" attributes="0"/>
+                  <Component id="btCero" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
