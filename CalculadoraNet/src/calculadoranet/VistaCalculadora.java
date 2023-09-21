@@ -458,54 +458,75 @@ public class VistaCalculadora extends javax.swing.JFrame {
      * @return String con la conversión de la cadena a notación postfija.
      */
     public String cambiaSigno(String cadena) {
-       if(cadena.equals("")) {
-           jTextArea1.setText("INGRESA UNA OPERACIÓN");
-           ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
-           throw error;
-       }
-       int i=cadena.length()-1, j=0, n;
-       String aux1="", aux2="", auxCadena="", auxCadena2="";
-       int contador=0;
-       boolean bandera = false;
-       while(i>=0 && !bandera) {
-           if(Metodos.jerarquia(cadena.charAt(i))>=3) {
-               bandera=true;
-               i++;
-           }
-           i--;
-       }
-       
-       for(j=0; j<=i; j++) {
-           aux1 = aux1 + cadena.charAt(j);
-       }
-       for(j=i+1; j<cadena.length(); j++) {
-           aux2 = aux2 + cadena.charAt(j);
-       }
-       
-       if(Metodos.jerarquia(cadena.charAt(j-1))!=1) {
-       aux1=aux1 + "(" + "-";
-       aux2=aux2 + ")";
-       cadena=aux1 + aux2;
-       } else {
-           j--;
-           i=0;
-           while(cadena.charAt(i)!='(' || cadena.charAt(i+1)!='-') {
-               auxCadena=auxCadena + cadena.charAt(i);
-               i++;
-           }
-           while(cadena.charAt(j)!= '(' ) {
-               contador++;
-               j--;
-           } 
-           contador--;
-           n=j+contador;
-           for(i=j+2; i<=n; i++) {
-               auxCadena2=auxCadena2+cadena.charAt(i);
-           }
-           auxCadena=auxCadena+auxCadena2;
-           cadena = auxCadena;
+        if(cadena.equals("")) {
+            jTextArea1.setText("INGRESA UNA OPERACIÓN");
+            ExcepcionColeccionVacia error = new ExcepcionColeccionVacia("ERROR no hay ninguna entrada ");
+            throw error;
         }
-       return cadena;
+        int i=cadena.length()-1, j=0, n;
+        String aux1="", aux2="", auxCadena="", auxCadena2="";
+        int contador=0;
+        boolean bandera = false;
+        while(i>=0 && !bandera) {
+            if(Metodos.jerarquia(cadena.charAt(i))>=3) {
+                bandera=true;
+                i++;
+            }
+            i--;
+        }
+       
+        for(j=0; j<=i; j++) {
+            aux1 = aux1 + cadena.charAt(j);
+        }
+        for(j=i+1; j<cadena.length(); j++) {
+            aux2 = aux2 + cadena.charAt(j);
+        }
+       
+        if(Metodos.jerarquia(cadena.charAt(j-1))!=1 || cadena.charAt(i+1)=='('){
+           if(cadena.charAt(i+1)!= '('){
+           
+            aux1=aux1 + "(" + "-";
+            aux2=aux2 + ")";
+        
+            cadena=aux1 + aux2;
+           } else{
+                i=0;
+                j--;
+                contador=0;
+                while(cadena.charAt(j)!= '('){
+                    contador++;
+                    j--;
+                }
+                n= j+contador;
+                for(i=j;i<=n;i++){
+                    if(InAPos.isNumeric(String.valueOf(cadena.charAt(i)))) {
+                        auxCadena = auxCadena + cadena.charAt(i);
+                    }
+                    
+                }
+                cadena = aux1 + "(" + "(" + "-" + auxCadena + ")";
+           } 
+       } else{
+            j--;
+            i=0;
+            contador=0;
+            while(cadena.charAt(i)!='(' || cadena.charAt(i+1)!='-'){
+                auxCadena = auxCadena + cadena.charAt(i);
+                i++;
+            }
+            while(cadena.charAt(j)!='('){
+                contador++;
+                j--;
+            }
+            contador--;
+            n = j + contador;
+            for(i=j+2;i<=n;i++){
+                auxCadena2 = auxCadena2 + cadena.charAt(i);
+                }
+            auxCadena = auxCadena + auxCadena2; 
+            cadena = auxCadena;
+          }
+        return cadena;
     }
     
     //cambia el signo de la cadena con la ayuda del método auxiliar cambiaSigno
