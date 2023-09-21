@@ -54,11 +54,11 @@ public class Metodos {
      * Recibe un caracter y hay 7 casos:
      * </pre>
      * <ul> 
-     *  <li> -1 si el caracter no es admisible (i.e una letra o un caracter que no sea un operador).
+     *  <li> -1 si el caracter inadmisible (i.e una letra o un caracter que no sea un operador).
      *  <li> 0 si el caracter es un número.
      *  <li> 1 si es un paréntesis.
      *  <li> 2 si es un punto decimal.
-     *  <li> 3 si es suma o si es una resta.
+     *  <li> 3 si es suma o si es resta.
      *  <li> 4 si es una multiplicación o una división.
      *  <li> 5 si es una operación de potencia.
      * </ul>
